@@ -1,2 +1,5 @@
 #ignore this folders
 auto/ 
+instance/
+Idiogai/__pycache__/
+__pycache__/
