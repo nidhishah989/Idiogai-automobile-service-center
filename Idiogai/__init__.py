@@ -40,11 +40,20 @@ def create_app(test_config =None):
         SECRET_KEY='dev',
 
         #connect the database engine here. #make sure you have database idiogai created locally before creating app
-        SQLALCHEMY_DATABASE_URI = 'mysql://root:root1234@localhost/idiogai',
+        SQLALCHEMY_DATABASE_URI = 'mysql://root:root1234@localhost/Idiogai',
         
     )
 
     db.init_app(app)
+
+    ##################################################################################
+    ########################### REGISTER BLUEPRINTS ################################
+    from . import employee # register auth blueprint
+    app.register_blueprint(employee.emp)
+
+    from .import customerauth
+    app.register_blueprint(customerauth.cus)
+    ###################################################################################
     ########################################### Database table setting #######################################
     # call the command from cmd line to initialize the database tables.
     #we are not droping the table if created to update the table, so need to drop manually, either by mysql workbench or shell
@@ -82,6 +91,18 @@ def create_app(test_config =None):
     def hello():
         return 'Hello, World!'
     ########################################################################################
+    login_manager = LoginManager()
+    login_manager.login_view = 'emp.login'
+    login_manager.init_app(app)
+
+    @login_manager.user_loader
+    def load_user(employee_id):
+        return Employee.query.get(employee_id)
+
+    @login_manager.user_loader
+    def load_user(customer_id):
+        return Customer.query.get(customer_id)
+    ############################################################################################
     return app
     
 ####################################### database table-initialize-cmd-function #############

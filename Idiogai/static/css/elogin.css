@@ -1,0 +1,16 @@
+body{
+    background-color: #eef1f8;
+    margin:0px;
+    padding:0px;
+}
+
+.container{
+    max-height:100%;
+    max-width:100%;
+    margin-top:5%;
+}
+
+.row{
+    width:60%;
+}
+

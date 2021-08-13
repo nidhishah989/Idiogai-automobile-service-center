@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/ebase.css">
+    <title>{% block title %}Document{% endblock %}</title>
+</head>
+<body>
+   
+    <nav class="navbar navbar-expand-sm navbar-light bg-dark">
+        <div class="container-fluid">
+            
+            <button type="button" id="sidebarCollapse" class="btn btn-dark">
+                <i class ="fas fa-chevron-circle-left"> </i> 
+            </button>
+            <a class="navbar-brand" href="#">IDIOGAI SHOP</a>
+            <ul class="nav ml-auto">
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Hello, {{current_user.name}}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('emp.logout') }}" class="btn btn-warning"><span class="fas fa-user"></span> Sign Out</a>
+                </li>
+              </ul>
+        </div>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category, message in messages %} {% if category ==
+        'error' %}
+        <div class="alert alert-danger alter-dismissable fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% else %}
+        <div class="alert alert-success alter-dismissable fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endif %} {% endfor %} {% endif %} {% endwith %}
+    <div class="wrapper">
+
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header text-muted">
+                <small>Main Menu</small>
+           </div>
+
+            <ul class="list-group ">
+
+                <li class=" bg-dark list-group-item active">
+                    <a class="nav-link active" href="#">Home</a>
+                </li> 
+                <li class="sidebar-header text-muted">
+                    <small>Customization Plan Menu</small>
+                </li>
+                <li class="bg-dark list-group-item">
+                    <a class="nav-link" href="#">All Plans</a>
+                </li>
+                <li class="bg-dark list-group-item">
+                    <a class="nav-link" href="#">Update Plan</a>
+                </li>
+                <li class="bg-dark list-group-item ">
+                    <a class="nav-link" href="#submenu1" data-toggle="collapse">
+                       
+                        <span class="menu-collapsed">New Plan</span>
+                        <i class="fas fa-caret-down"></i> 
+                    
+                    </a>
+                    <div id='submenu1' class="collapse sidebar-submenu">
+                        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed">New Customer</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed">Already Member</span>
+                        </a>
+                    </div>
+                </li>
+
+            </ul>
+        </nav>
+    
+        <!-- Page Content -->
+        <div id="content">
+            <p>This is the main content</p>
+            <br>
+            <br>
+            <br>
+            <p>This is the main content</p>
+            <br>
+            <br>
+            <br>
+            <p>This is the main content</p>
+            <br>
+            <br>
+            <br>
+            <p>This is the main content</p>
+            <br>
+            <br>
+            <br>
+            <p>This is the main content</p>
+            <br>
+            <br>
+            <br>
+            <p>This is the main content</p>
+            <br>
+            <br>
+            <br>
+            <p>This is the main content</p>
+            <br>
+            <br>
+            <br>
+            <p>This is the main content</p>
+            <br>
+            <br>
+            <br>
+            <p>This is the main contentThis is the main contentThis is the main contentThis is the main content</p>
+            <br>
+            <br>
+            <br>
+        </div>
+    
+    </div> 
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>  
+
+    <script>
+        $(document).ready(function(){
+            $('#sidebarCollapse').on('click',function(){
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -6,7 +6,7 @@ class Customer(db.Model,UserMixin):
     customer_id=db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String(45))
     phone=db.Column(db.String(10))
-    Email=db.Column(db.String(150),unique=True)
+    email=db.Column(db.String(150),unique=True)
     password=db.Column(db.String(150))
     address=db.Column(db.String(250))
     city=db.Column(db.String(100))
@@ -16,12 +16,15 @@ class Customer(db.Model,UserMixin):
     vehicles=db.relationship('Vehicle')
     cust_plans=db.relationship('Customizationdetail')
 
+    def get_id(self):
+        return(int(self.customer_id))
+
 class Employee(db.Model,UserMixin):
     employee_id=db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String(45))
     jobtitle=db.Column(db.String(200))
     phone=db.Column(db.String(10))
-    Email=db.Column(db.String(150),unique=True)
+    email=db.Column(db.String(150),unique=True)
     password=db.Column(db.String(150))
     address=db.Column(db.String(250))
     city=db.Column(db.String(100))
@@ -31,7 +34,8 @@ class Employee(db.Model,UserMixin):
     cust_resp=db.relationship('Customizationdetail')
     items=db.relationship('Item')
     usedinitems=db.relationship('Labordetail')
-
+    def get_id(self):
+        return(int(self.employee_id))
 class Vehicle(db.Model):
     id=db.Column(db.Integer(),primary_key=True)
     vin=db.Column(db.String(200),unique=True)
